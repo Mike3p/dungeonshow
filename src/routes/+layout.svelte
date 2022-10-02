@@ -1,5 +1,8 @@
 <script>
 	import '../app.css';
+	import '@brainandbones/skeleton/styles/all.css';
+	import '../theme.postcss';
+
 	import Footer from './footer.svelte';
 	import Header from './header.svelte';
 	import Nav from './nav.svelte';

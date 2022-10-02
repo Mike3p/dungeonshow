@@ -26,7 +26,7 @@
 	}
 </script>
 
-<div>
+<div class="p-2">
 	<p>
 		<b>{character.name}</b>: {character.ethnicity}
 		{character.className}
@@ -92,6 +92,6 @@
 		<p><b>Style:</b> {character.style}</p>
 	{/if}
 	<p>
-		<a href={url} download={filename} class="link">export character</a>
+		<a href={url} download={filename}>export character</a>
 	</p>
 </div>

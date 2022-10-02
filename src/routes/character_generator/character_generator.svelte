@@ -2,9 +2,6 @@
 	import type { Character } from '$lib/character';
 	import type { CharacterGenerator } from '$lib/character_generator';
 	import CharacterComponent from './character.svelte';
-	import Select from '$lib/ui/select.svelte';
-	import Button from '$lib/ui/button.svelte';
-	import NumberInput from '$lib/ui/number_input.svelte';
 
 	export let generator: CharacterGenerator;
 
@@ -24,20 +21,42 @@
 	}
 </script>
 
-<form on:submit|preventDefault={handleGenerate}>
-	<Select id="class" bind:value={characterClass} options={generator.classes} label="Class:" />
-	<Select
-		id="ethnicity"
-		bind:value={ethnicity}
-		options={generator.ethnicities}
-		label="Ethnicity:"
-	/>
-	<Select id="level" bind:value={level} options={generator.levels} label="Level:" />
-	<NumberInput id="number" bind:value={number} label="Number:" />
+<form on:submit|preventDefault={handleGenerate} class="flex flex-wrap justify-between gap-2 m-2">
+	<label for="class" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
+		<span>Class</span>
+		<select id="class" bind:value={characterClass}>
+			{#each generator.classes as clazz}
+				<option value={clazz}>{clazz}</option>
+			{/each}
+		</select>
+	</label>
 
-	<Button type="submit">Generate</Button>
+	<label for="ethnicity" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
+		<span>Ethnicity</span>
+		<select id="class" bind:value={ethnicity}>
+			{#each generator.ethnicities as ethnicity}
+				<option value={ethnicity}>{ethnicity}</option>
+			{/each}
+		</select>
+	</label>
+
+	<label for="level" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
+		<span>Level</span>
+		<select id="class" bind:value={level}>
+			{#each generator.levels as lvl}
+				<option value={lvl}>{lvl}</option>
+			{/each}
+		</select>
+	</label>
+
+	<label for="number" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
+		<span>Number</span>
+		<input id="number" type="number" bind:value={number} class="w-14 md:max-w-[73px]" />
+	</label>
+
+	<button type="submit" class="btn btn-filled-primary">Generate</button>
 </form>
 
 {#each characters as char}
-	<div class="m-2"><CharacterComponent character={char} /></div>
+	<CharacterComponent character={char} />
 {/each}
