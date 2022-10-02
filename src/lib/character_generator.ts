@@ -1,5 +1,5 @@
 import { Character } from './character';
-import type { GeneratorDict, Requisites } from '$lib/generator_dict/interfaces';
+import type { GeneratorDict, Requisites } from '$lib/generator_dict/generator_dict';
 import { roll } from './dice';
 
 export class CharacterGenerator {
