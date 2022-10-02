@@ -1,5 +1,5 @@
-import basicGeneratorDict from '$lib/data/generator_basic_acks.json';
-import circleOfDawnDict from '$lib/data/generator_circle_of_dawn.json';
+import basicGeneratorDict from '$lib/data/generator_basic_acks.yaml';
+import circleOfDawnDict from '$lib/data/generator_circle_of_dawn.yaml';
 import type { GeneratorDict } from '$lib/generator_dict/generator_dict';
 
 type DataType = {

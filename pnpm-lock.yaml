@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@brainandbones/skeleton': ^0.41.49
+  '@modyfi/vite-plugin-yaml': ^1.0.3
   '@playwright/test': ^1.25.0
   '@sveltejs/adapter-auto': next
   '@sveltejs/adapter-node': 1.0.0-next.96
@@ -26,6 +27,7 @@ specifiers:
 
 devDependencies:
   '@brainandbones/skeleton': 0.41.49
+  '@modyfi/vite-plugin-yaml': 1.0.3_vite@3.1.4
   '@playwright/test': 1.26.1
   '@sveltejs/adapter-auto': 1.0.0-next.80
   '@sveltejs/adapter-node': 1.0.0-next.96
@@ -153,6 +155,18 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: true
+
+  /@modyfi/vite-plugin-yaml/1.0.3_vite@3.1.4:
+    resolution: {integrity: sha512-UB9A9b5h9v4fruyZPeLQh4k7ZF7KPrOuMnTfSIJD2WYXx9rHE0U19/RzLjFhDzWnTBPZWu6RoT4wxsaDkxXUzw==}
+    requiresBuild: true
+    peerDependencies:
+      vite: ^2.6.0 || ^3.0.0
+    dependencies:
+      '@rollup/pluginutils': 4.2.1
+      js-yaml: 4.1.0
+      tosource: 2.0.0-alpha.3
+      vite: 3.1.4
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -2364,6 +2378,11 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
+    dev: true
+
+  /tosource/2.0.0-alpha.3:
+    resolution: {integrity: sha512-KAB2lrSS48y91MzFPFuDg4hLbvDiyTjOVgaK7Erw+5AmZXNq4sFRVn8r6yxSLuNs15PaokrDRpS61ERY9uZOug==}
+    engines: {node: '>=10'}
     dev: true
 
   /totalist/3.0.0:

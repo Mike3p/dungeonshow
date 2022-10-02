@@ -6,23 +6,14 @@
 	export let data: PageData;
 
 	let chosenGenerator = Object.keys(data.generatorDicts)[0];
-	let generator = new CharacterGenerator(data.generatorDicts[chosenGenerator]);
-
-	function changeGenerator(event: Event) {
-		generator = new CharacterGenerator(data.generatorDicts[chosenGenerator]);
-	}
+	$: generator = new CharacterGenerator(data.generatorDicts[chosenGenerator]);
 </script>
 
 <h1>Character Generator</h1>
 <div class="m-2">
 	<label for="generator" class="flex flex-wrap md:flex-nowrap items-baseline gap-1">
 		<span>Generator</span>
-		<select
-			id="generator"
-			class="w-full md:w-fit"
-			on:change={changeGenerator}
-			bind:value={chosenGenerator}
-		>
+		<select id="generator" class="w-full md:w-fit" bind:value={chosenGenerator}>
 			{#each Object.keys(data.generatorDicts) as name}
 				<option value={name}>{name}</option>
 			{/each}
