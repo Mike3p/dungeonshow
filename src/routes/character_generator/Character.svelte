@@ -29,7 +29,7 @@
 <div class="p-2">
 	<p>
 		<b>{character.name}</b>: {character.ethnicity}
-		{character.className}
+		{character.class_name}
 		{character.level}: Str: {character.strength}, Int: {character.intelligence}, Wis: {character.wisdom},
 		Dex: {character.dexterity}, Con: {character.constitution}, Cha: {character.charisma};
 		<b>XP</b>: {character.experiencepoints}

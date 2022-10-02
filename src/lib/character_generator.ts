@@ -39,7 +39,7 @@ export class CharacterGenerator {
 					? this.getRandomElement(this.generatorDict.ethnicity[chosenEthnicity]['female names'])
 					: this.getRandomElement(this.generatorDict.ethnicity[chosenEthnicity]['male names']);
 
-				return new Character(
+				return Character.fromGenerator(
 					chosenClassDict,
 					this.generatorDict.generalproficiencies,
 					chosenClassDict.proficiencyprogression,

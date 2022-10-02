@@ -2,6 +2,8 @@
 	import type { Character } from '$lib/character';
 	import type { CharacterGenerator } from '$lib/character_generator';
 	import CharacterComponent from './Character.svelte';
+	import { editedCharacter, editedCharacterStartingYaml } from '$lib/character_store';
+	import { generatedCharacters } from '$lib/character_store';
 
 	export let generator: CharacterGenerator;
 
@@ -9,15 +11,34 @@
 	let ethnicity = generator.ethnicities[0];
 	let level = generator.levels[0];
 	let number = 1;
-	let characters: Character[] = [];
+
+	$: characters =
+		$editedCharacter && !$generatedCharacters.includes($editedCharacter)
+			? [$editedCharacter, ...$generatedCharacters]
+			: $generatedCharacters;
 
 	function handleGenerate() {
-		characters = generator.generateCharacters({
+		$generatedCharacters = generator.generateCharacters({
 			characterClass,
 			ethnicity,
 			level,
 			number
 		});
+	}
+
+	function startEditingCharacter(char: Character) {
+		$editedCharacter = char;
+		$editedCharacterStartingYaml = char.toYaml();
+	}
+
+	function reset() {
+		$editedCharacter = undefined;
+		$editedCharacterStartingYaml = '';
+		$generatedCharacters = [];
+		characterClass = generator.classes[0];
+		ethnicity = generator.ethnicities[0];
+		level = generator.levels[0];
+		number = 1;
 	}
 </script>
 
@@ -59,9 +80,25 @@
 		</label>
 	</div>
 
-	<button type="submit" class="btn btn-filled-primary w-full lg:w-fit">Generate</button>
+	<div>
+		<button type="button" class="btn btn-filled-warning w-full lg:w-fit" on:click={reset}
+			>Reset</button
+		>
+		<button type="submit" class="btn btn-filled-primary w-full lg:w-fit">Generate</button>
+	</div>
 </form>
 
 {#each characters as char}
 	<CharacterComponent character={char} />
+	<button
+		class="btn btn-outline-primary"
+		on:click={() => startEditingCharacter(char)}
+		disabled={$editedCharacter === char}
+	>
+		{#if $editedCharacter === char}
+			Selected for Editor
+		{:else}
+			Select for Editor
+		{/if}
+	</button>
 {/each}

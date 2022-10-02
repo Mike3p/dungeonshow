@@ -42,14 +42,14 @@ export class Character {
 	public ethnicity: string;
 	public name: string;
 	public gender: string;
-	public class: string;
-	public className: string;
+	public cclass: string;
+	public class_name: string;
 	public experiencepoints: number;
 	public level: number;
-	public maxLevel: number;
+	public maxlevel: number;
 	public hdtype: string;
 	public mv: number;
-	public modMv: number;
+	public mod_mv: number;
 	public basehp: number;
 	public hp: number;
 	public alignment: string;
@@ -125,7 +125,16 @@ export class Character {
 	leadershipability: number;
 	zoneofcontrol: number;
 
-	constructor(
+	private constructor() {}
+
+	public static fromYaml(yamlString: string) {
+		const char = new Character();
+		const yml = yaml.load(yamlString);
+		Object.assign(char, yml);
+		return char;
+	}
+
+	public static fromGenerator(
 		classDict: CharacterClass,
 		generalProfs: Ability[],
 		generalProfsProgression: SimpleProgression,
@@ -140,122 +149,111 @@ export class Character {
 		magicalItemRolls: Dict<number>,
 		path = '',
 		probToDoubleDip = 20
-	) {
+	): Character {
+		const char = new Character();
 		// ability scores
-		this.strength = scores.strength || 10;
-		this.dexterity = scores.dexterity || 10;
-		this.constitution = scores.constitution || 10;
-		this.intelligence = scores.intelligence || 10;
-		this.wisdom = scores.wisdom || 10;
-		this.charisma = scores.charisma || 10;
+		char.strength = scores.strength || 10;
+		char.dexterity = scores.dexterity || 10;
+		char.constitution = scores.constitution || 10;
+		char.intelligence = scores.intelligence || 10;
+		char.wisdom = scores.wisdom || 10;
+		char.charisma = scores.charisma || 10;
 
-		this.pathName = path;
+		char.pathName = path;
 
 		// base attributes
-		this.ethnicity = ethnicity;
-		this.name = name;
-		this.gender = gender;
-		this.class = characterClass;
-		this.className = classDict.name ?? characterClass;
-		this.experiencepoints = 0;
-		this.level = 0;
-		this.maxLevel = classDict.maxlevel;
-		this.hdtype = classDict.hd;
-		this.mv = classDict.mv;
-		this.modMv = this.mv;
-		this.basehp = 0;
-		this.alignment = alignment;
+		char.ethnicity = ethnicity;
+		char.name = name;
+		char.gender = gender;
+		char.cclass = characterClass;
+		char.class_name = classDict.name ?? characterClass;
+		char.experiencepoints = 0;
+		char.level = 0;
+		char.maxlevel = classDict.maxlevel;
+		char.hdtype = classDict.hd;
+		char.mv = classDict.mv;
+		char.mod_mv = char.mv;
+		char.basehp = 0;
+		char.alignment = alignment;
 
 		// miscellaneous
-		this.numberofattacks = 1;
-		this.encumbrance = [0, 0];
-		this.lightencumbrance = 6;
-		this.mediumencumbrance = 8;
-		this.heavyencumbrance = 11;
-		this.proficiencies = {};
-		this.abilities = {};
-		this.cleavesperlevel = classDict['cleavesperlevel'];
-		this.hpafter9 = classDict['hpafter9'];
+		char.numberofattacks = 1;
+		char.encumbrance = [0, 0];
+		char.lightencumbrance = 6;
+		char.mediumencumbrance = 8;
+		char.heavyencumbrance = 11;
+		char.proficiencies = {};
+		char.abilities = {};
+		char.cleavesperlevel = classDict['cleavesperlevel'];
+		char.hpafter9 = classDict['hpafter9'];
 
 		// inventory
-		this.weapons = {};
-		this.armor = {};
-		this.gear = {};
-		this.magical_items = {};
-		this.magical_item_rolls = magicalItemRolls;
+		char.weapons = {};
+		char.armor = {};
+		char.gear = {};
+		char.magical_items = {};
+		char.magical_item_rolls = magicalItemRolls;
 
 		// progression
-		this.experienceforlevel = classDict.experienceforlevel;
-		this.classproficiencylist = classDict.proficiencylist;
-		this.generalproficiencylist = generalProfs;
-		this.attackprogression = classDict.attackprogression;
-		this.savingthrowprogression = classDict.savingthrows.progression;
-		this.initialsaves = classDict.savingthrows.initial;
-		this.genprofprogression = generalProfsProgression;
-		this.classprofprogression = classDict.proficiencyprogression;
-		this.primerequisites = classDict.primerequisites ?? {};
-		this.minrequisites = classDict.minrequisites ?? {};
-		this.abilityprogression = classDict.abilityprogression;
+		char.experienceforlevel = classDict.experienceforlevel;
+		char.classproficiencylist = classDict.proficiencylist;
+		char.generalproficiencylist = generalProfs;
+		char.attackprogression = classDict.attackprogression;
+		char.savingthrowprogression = classDict.savingthrows.progression;
+		char.initialsaves = classDict.savingthrows.initial;
+		char.genprofprogression = generalProfsProgression;
+		char.classprofprogression = classDict.proficiencyprogression;
+		char.primerequisites = classDict.primerequisites ?? {};
+		char.minrequisites = classDict.minrequisites ?? {};
+		char.abilityprogression = classDict.abilityprogression;
 
-		this.initializeScores();
+		char.initializeScores();
 
 		// spellcasting
 		if (classDict.magictypes) {
-			this.casterlevel = 0;
-			this.ceremonythrow = 11;
-			this.magictypes = classDict.magictypes;
-			this.casterfraction = classDict.casterfraction ?? 1;
-			this.spells = {};
+			char.casterlevel = 0;
+			char.ceremonythrow = 11;
+			char.magictypes = classDict.magictypes;
+			char.casterfraction = classDict.casterfraction ?? 1;
+			char.spells = {};
 			for (const magicType of classDict.magictypes) {
-				this.spells[magicType.name] = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+				char.spells[magicType.name] = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
 			}
-			this.spellprogressions = {};
+			char.spellprogressions = {};
 			for (const mt of classDict.magictypes) {
-				this.spellprogressions[mt.name] = { progression: mt.progression, mode: mt.mode };
+				char.spellprogressions[mt.name] = { progression: mt.progression, mode: mt.mode };
 			}
 		}
 
 		// todo not sure if there is a better solution. i need compute statistics in case of changing attributes, levels, proficiencies, etc.
-		if (this.intelligence >= 13)
-			this.chooseProficiency(this.generalproficiencylist, 'random', probToDoubleDip);
-		if (this.intelligence >= 16)
-			this.chooseProficiency(this.generalproficiencylist, 'random', probToDoubleDip);
-		if (this.intelligence >= 18)
-			this.chooseProficiency(this.generalproficiencylist, 'random', probToDoubleDip);
+		if (char.intelligence >= 13)
+			char.chooseProficiency(char.generalproficiencylist, 'random', probToDoubleDip);
+		if (char.intelligence >= 16)
+			char.chooseProficiency(char.generalproficiencylist, 'random', probToDoubleDip);
+		if (char.intelligence >= 18)
+			char.chooseProficiency(char.generalproficiencylist, 'random', probToDoubleDip);
 
 		// this is for normalmen
-		this.getAbilitiesForCurrentLevel(probToDoubleDip);
-		// this.getEquipment(classDict.equipment);
-		// this.getMagicalItems(level)
+		char.getAbilitiesForCurrentLevel(probToDoubleDip);
+		// char.getEquipment(classDict.equipment);
+		// char.getMagicalItems(level)
 
-		this.computeStatistics();
-		this.hp = 0;
-		if (this.maxLevel === 0) {
-			this.basehp = this.basehp + Math.max(1, roll(`1${this.hdtype}`) + this.conmod);
-			this.hp = this.basehp;
+		char.computeStatistics();
+		char.hp = 0;
+		if (char.maxlevel === 0) {
+			char.basehp = char.basehp + Math.max(1, roll(`1${char.hdtype}`) + char.conmod);
+			char.hp = char.basehp;
 		}
-		this.levelup(level, probToDoubleDip);
+		char.levelup(level, probToDoubleDip);
 
-		this.addLooks(styleTables);
-		this.personality = createPersonalityString();
+		char.addLooks(styleTables);
+		char.personality = createPersonalityString();
+		return char;
 	}
 
-	private initializeScores() {
-		for (const requisites of [this.minrequisites, this.primerequisites]) {
-			for (const att in requisites) {
-				const attribute = ABILITY_SCORES.find((a) => a === att);
-				if (attribute) {
-					while (this[attribute] < (requisites[attribute] || 0)) {
-						this[attribute] = roll('3d6');
-					}
-				}
-			}
-		}
-	}
-
-	private levelup(to: number, probToDoubleDip: number) {
+	public levelup(to: number, probToDoubleDip: number) {
 		for (let level = this.level; level <= to; level++) {
-			if (this.level >= this.maxLevel) return;
+			if (this.level >= this.maxlevel) return;
 
 			this.level += 1;
 			if (this.casterlevel !== undefined && this.casterfraction !== undefined)
@@ -275,6 +273,19 @@ export class Character {
 		}
 
 		this.computeStatistics();
+	}
+
+	private initializeScores() {
+		for (const requisites of [this.minrequisites, this.primerequisites]) {
+			for (const att in requisites) {
+				const attribute = ABILITY_SCORES.find((a) => a === att);
+				if (attribute) {
+					while (this[attribute] < (requisites[attribute] || 0)) {
+						this[attribute] = roll('3d6');
+					}
+				}
+			}
+		}
 	}
 
 	private getAbilitiesForCurrentLevel(probToDoubleDip: number) {

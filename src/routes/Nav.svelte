@@ -4,7 +4,8 @@
 
 	const navOptions = [
 		{ href: '/', name: 'Home' },
-		{ href: '/character_generator', name: 'Character generator' }
+		{ href: '/character_generator', name: 'Character generator' },
+		{ href: '/character_editor', name: 'Character editor' }
 	];
 </script>
 
