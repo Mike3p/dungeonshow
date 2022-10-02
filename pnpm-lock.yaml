@@ -8,12 +8,14 @@ specifiers:
   '@sveltejs/adapter-node': 1.0.0-next.96
   '@sveltejs/kit': next
   '@tailwindcss/forms': ^0.5.3
+  '@types/js-yaml': ^4.0.5
   '@typescript-eslint/eslint-plugin': ^5.27.0
   '@typescript-eslint/parser': ^5.27.0
   autoprefixer: ^10.4.12
   eslint: ^8.16.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^4.0.0
+  js-yaml: ^4.1.0
   postcss: ^8.4.17
   prettier: ^2.6.2
   prettier-plugin-svelte: ^2.7.0
@@ -33,12 +35,14 @@ devDependencies:
   '@sveltejs/adapter-node': 1.0.0-next.96
   '@sveltejs/kit': 1.0.0-next.507_svelte@3.50.1+vite@3.1.4
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
+  '@types/js-yaml': 4.0.5
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
   '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
   autoprefixer: 10.4.12_postcss@8.4.17
   eslint: 8.24.0
   eslint-config-prettier: 8.5.0_eslint@8.24.0
   eslint-plugin-svelte3: 4.0.0_snydkosur25h6rjxszquwacaua
+  js-yaml: 4.1.0
   postcss: 8.4.17
   prettier: 2.7.1
   prettier-plugin-svelte: 2.7.1_nk6d2fkgcllkkdynqbuearcure
@@ -380,6 +384,10 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
+    dev: true
+
+  /@types/js-yaml/4.0.5:
+    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
     dev: true
 
   /@types/json-schema/7.0.11:
