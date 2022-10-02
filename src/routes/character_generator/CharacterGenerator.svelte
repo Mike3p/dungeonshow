@@ -55,7 +55,7 @@
 
 		<label for="number" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
 			<span>Number</span>
-			<input id="number" type="number" bind:value={number} class="w-14 md:max-w-[73px]" />
+			<input id="number" type="number" bind:value={number} class="w-14 md:max-w-[73px]" min="1" />
 		</label>
 	</div>
 
