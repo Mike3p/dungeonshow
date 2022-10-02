@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { CharacterGenerator } from '$lib/character_generator';
-	import CharacterGeneratorComponent from './character_generator.svelte';
-	import Select from '$lib/ui/select.svelte';
+	import CharacterGeneratorComponent from './CharacterGenerator.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -14,13 +13,20 @@
 	}
 </script>
 
-<h1 class="text-3xl">Character Generator</h1>
-<Select
-	id="generator"
-	label="Generator:"
-	on:change={changeGenerator}
-	bind:value={chosenGenerator}
-	options={Object.keys(data.generatorDicts)}
-/>
-
+<h1>Character Generator</h1>
+<div class="m-2">
+	<label for="generator" class="flex flex-wrap md:flex-nowrap items-baseline gap-1">
+		<span>Generator</span>
+		<select
+			id="generator"
+			class="w-full md:w-fit"
+			on:change={changeGenerator}
+			bind:value={chosenGenerator}
+		>
+			{#each Object.keys(data.generatorDicts) as name}
+				<option value={name}>{name}</option>
+			{/each}
+		</select>
+	</label>
+</div>
 <CharacterGeneratorComponent {generator} />
