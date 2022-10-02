@@ -19,5 +19,5 @@
 	<div slot="default" class="p-4">
 		<slot />
 	</div>
-	<svelte:fragment slot="footer"><Footer /></svelte:fragment>
+	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
 </AppShell>
