@@ -59,7 +59,7 @@
 		</label>
 	</div>
 
-	<button type="submit" class="btn btn-filled-primary w-full lg:w-fit rounded">Generate</button>
+	<button type="submit" class="btn btn-filled-primary w-full lg:w-fit">Generate</button>
 </form>
 
 {#each characters as char}

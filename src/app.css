@@ -5,3 +5,7 @@
 html, body {
 	@apply h-full overflow-hidden;
 }
+
+.btn {
+	@apply font-bold rounded;
+}
