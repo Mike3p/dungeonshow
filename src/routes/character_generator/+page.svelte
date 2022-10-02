@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { CharacterGenerator } from '$lib/character_generator';
-	import CharacterGeneratorComponent from './character_generator.svelte';
+	import CharacterGeneratorComponent from './CharacterGenerator.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

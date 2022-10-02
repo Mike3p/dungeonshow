@@ -3,9 +3,9 @@
 	import '../app.css';
 	import '@brainandbones/skeleton/styles/all.css';
 
-	import Footer from './footer.svelte';
-	import Header from './header.svelte';
-	import Nav from './nav.svelte';
+	import Footer from './Footer.svelte';
+	import Header from './Header.svelte';
+	import Nav from './Nav.svelte';
 	import { AppShell, Drawer } from '@brainandbones/skeleton';
 	import { menuStore } from '$lib/stores';
 </script>
