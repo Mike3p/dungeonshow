@@ -1,23 +1,23 @@
 <script>
+	import '../theme.postcss';
 	import '../app.css';
 	import '@brainandbones/skeleton/styles/all.css';
-	import '../theme.postcss';
 
 	import Footer from './footer.svelte';
 	import Header from './header.svelte';
 	import Nav from './nav.svelte';
+	import { AppShell, Drawer } from '@brainandbones/skeleton';
+	import { menuStore } from '$lib/stores';
 </script>
 
-<div class="flex flex-col h-screen">
-	<Header />
-	<div class="flex justify-items-stretch flex-grow">
-		<aside class="flex-shrink-0">
-			<Nav />
-		</aside>
-
-		<main class="p-2 flex-grow">
-			<slot />
-		</main>
+<Drawer open={menuStore} position="left">
+	<Nav />
+</Drawer>
+<AppShell>
+	<svelte:fragment slot="header"><Header /></svelte:fragment>
+	<div slot="sidebarLeft" class="hidden lg:block h-full"><Nav /></div>
+	<div slot="default" class="p-4">
+		<slot />
 	</div>
-	<Footer />
-</div>
+	<svelte:fragment slot="footer"><Footer /></svelte:fragment>
+</AppShell>
