@@ -1,0 +1,696 @@
+all_foci:
+  Alert:
+    name: Alert
+    1: Notice
+  Armsman:
+    name: Armsman
+    1: Stab
+  Assassin:
+    name: Assassin
+    1: Sneak
+  Authority:
+    name: Authority
+    1: Lead
+  Close Combatant:
+    name: Close Combatant
+    1: &id002
+      die: 1d12
+      res:
+        1-6: Shoot
+        11-12: Punch
+        7-10: Stab
+  Connected:
+    name: Connected
+    1: Connect
+  Die Hard:
+    name: Die Hard
+  Diplomat:
+    name: Diplomat
+    1: Talk
+  Gunslinger:
+    name: Gunslinger
+    1: Shoot
+  Hacker:
+    name: Hacker
+    1: Program
+  Healer:
+    name: Healer
+    1: Heal
+  Henchkeeper:
+    name: Henchkeeper
+  Ironhide:
+    name: Ironhide
+  Psychic Training:
+    name: Psychic Training
+  Savage Fray:
+    name: Savage Fray
+    1: Stab
+  Shocking Assault:
+    name: Shocking Assault
+    1:
+      die: 1d4
+      res:
+        1-3: Stab
+        4: Punch
+  Sniper:
+    name: Sniper
+    1: Shoot
+  Specialist:
+    name: Specialist
+    1: &id004
+      die: 1d17
+      res:
+        1: Administer
+        2: Connect
+        3: Exert
+        4: Fix
+        5: Heal
+        6: Know
+        7: Lead
+        8: Notice
+        9: Perform
+        10: Pilot
+        11: Program
+        13: Sneak
+        14: Survive
+        15: Talk
+        16: Trade
+        17: Work
+  Star Captain:
+    name: Star Captain
+    1: Lead
+  Starfarer:
+    name: Starfarer
+    1: Pilot
+  Tinker:
+    name: Tinker
+    1: Fix
+  Unarmed Combatant:
+    name: Unarmed Combatant
+    1: Punch
+  Wanderer:
+    name: Wanderer
+    1: Survive
+  Wild Psychic:
+    name: Wild Psychic
+all_skills: &id001
+  die: 1d19
+  res:
+    1: Administer
+    2: Connect
+    3: Exert
+    4: Fix
+    5: Heal
+    6: Know
+    7: Lead
+    8: Notice
+    9: Perform
+    10: Pilot
+    11: Program
+    12: Punch
+    13: Shoot
+    14: Sneak
+    15: Stab
+    16: Survive
+    17: Talk
+    18: Trade
+    19: Work
+backgrounds:
+  Merchant:
+    free: Trade
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Mental
+        3: +2 Mental
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: *id002
+        3: Connect
+        4: Fix
+        5: Know
+        6: Notice
+        7: Trade
+        8: Talk
+    name: Merchant
+  Noble:
+    free: Lead
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Mental
+        3: +2 Mental
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: *id002
+        3: Connect
+        4: Know
+        5: Lead
+        6: Notice
+        7: Pilot
+        8: Talk
+    name: Noble
+  Official:
+    free: Administer
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Mental
+        3: +2 Mental
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: *id001
+        3: Connect
+        4: Know
+        5: Lead
+        6: Notice
+        7: Talk
+        8: Trade
+    name: Official
+  Peasant:
+    free: Exert
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Physical
+        4: +2 Physical
+        5: Exert
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Connect
+        2: Exert
+        3: Fix
+        4: Notice
+        5: Sneak
+        6: Survive
+        7: Trade
+        8: Work
+    name: Peasant
+  Physician:
+    free: Heal
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Mental
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: Connect
+        3: Fix
+        4: Heal
+        5: Know
+        6: Notice
+        7: Talk
+        8: Trade
+    name: Physician
+  Pilot:
+    free: Pilot
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Physical
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Connect
+        2: Exert
+        3: Fix
+        4: Notice
+        5: Pilot
+        6: Pilot
+        7: Shoot
+        8: Trade
+    name: Pilot
+  Politician:
+    free: Talk
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Mental
+        3: +2 Mental
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: Connect
+        3: Connect
+        4: Lead
+        5: Notice
+        6: Perform
+        7: Talk
+        8: Talk
+    name: Politician
+  Scholar:
+    free: Know
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Mental
+        3: +2 Mental
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: Connect
+        3: Fix
+        4: Know
+        5: Notice
+        6: Perform
+        7: Program
+        8: Talk
+    name: Scholar
+  Soldier:
+    free: *id002
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Physical
+        4: +2 Physical
+        5: Exert
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Andminister
+        2: *id002
+        3: Exert
+        4: Fix
+        5: Lead
+        6: Notice
+        7: Sneak
+        8: Survive
+    name: Soldier
+  Spacer:
+    free: Fix
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Physical
+        4: +2 Mental
+        5: Exert
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: Connect
+        3: Exert
+        4: Fix
+        5: Know
+        6: Pilot
+        7: Program
+        8: Talk
+    name: Spacer
+  Technician:
+    free: Fix
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Mental
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: Connect
+        3: Exert
+        4: Fix
+        5: Fix
+        6: Know
+        7: Notice
+        8: Pilot
+    name: Technician
+  Thug:
+    free: *id002
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Physical
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: *id002
+        2: Connect
+        3: Exert
+        4: Notice
+        5: Sneak
+        6:
+          die: 1d2
+          res:
+            1: Stab
+            2: Shoot
+        7: Survive
+        8: Talk
+    name: Thug
+  Vagabond:
+    free: Survive
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Physical
+        4: +2 Mental
+        5: Exert
+        6: Any
+    learn:
+      die: 1d8
+      res:
+        1: *id002
+        2: Connect
+        3: Notice
+        4: Perform
+        5: Pilot
+        6: Sneak
+        7: Survive
+        8: Work
+    name: Vagabond
+  barbarian:
+    free: Survive
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Physical
+        4: +2 Mental
+        5: Exert
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: *id002
+        2: Connect
+        3: Exert
+        4: Lead
+        5: Notice
+        6: Punch
+        7: Sneak
+        8: Survive
+    name: Barbarian
+  clergy:
+    free: talk
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Mental
+        3: +2 Physical
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: Connect
+        3: Know
+        4: Lead
+        5: Notice
+        6: Perform
+        7: Talk
+        8: Talk
+    name: Clergy
+  courtesan:
+    free: Perform
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Mental
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: *id002
+        2: Connect
+        3: Exert
+        4: Notice
+        5: Perform
+        6: Talk
+        7: Trade
+        8: Survive
+    name: Courtesan
+  criminal:
+    free: Sneak
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Mental
+        3: +2 Physical
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: Administer
+        2: *id002
+        3: Connect
+        4: Notice
+        5: Program
+        6: Sneak
+        7: Talk
+        8: Trade
+    name: Criminal
+  dilettante:
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +1 Any
+        3: +1 Any
+        4: +1 Any
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: *id001
+        2: *id001
+        3: Connect
+        4: Know
+        5: perform
+        6: Pilot
+        7: Talk
+        8: Trade
+    name: barbarian
+  entertainer:
+    free: Perform
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Mental
+        3: +2 Physical
+        4: +2 Mental
+        5: Connect
+        6: *id001
+    learn:
+      die: 1d8
+      res:
+        1: *id002
+        2: Connect
+        3: Exert
+        4: Notice
+        5: Perform
+        6: perform
+        7: Sneak
+        8: Talk
+    name: entertainer
+  name:
+    free: null
+    grow:
+      die: 1d6
+      res:
+        1: +1 Any
+        2: +2 Physical
+        3: +2 Physical
+        4: +2 Mental
+        5: Exert
+        6: Any
+    learn:
+      die: 1d8
+      res:
+        1: Any Combat
+        2: null
+        3: null
+        4: null
+        5: null
+        6: null
+        7: null
+        8: null
+    name: name
+classes:
+  Psychic:
+    abilities:
+    - &id003
+      die: 1d6
+      res:
+        1: Biopsionics
+        2: Metapsionics
+        3: Precognition
+        4: Telekinesis
+        5: Telepathy
+        6: Teleportation
+    - *id003
+    hd: d6
+    mv: 10
+    name: Psychic
+  Specialist:
+    abilities:
+    - &id006
+      Authority:
+        name: Authority
+        1: Lead
+      Connected:
+        name: Connected
+        1: Connect
+      Diplomat:
+        name: Diplomat
+        1: Talk
+      Hacker:
+        name: Hacker
+        1: Program
+      Healer:
+        name: Healer
+        1: Heal
+      Henchkeeper:
+        name: Henchkeeper
+      Psychic Training:
+        name: Psychic Training
+      Specialist:
+        name: Specialist
+        1: *id004
+      Star Captain:
+        name: Star Captain
+        1: Lead
+      Starfarer:
+        name: Starfarer
+        1: Pilot
+      Tinker:
+        name: Tinker
+        1: Fix
+      Wanderer:
+        name: Wanderer
+        1: Survive
+      Wild Psychic:
+        name: Wild Psychic
+    hd: d6
+    mv: 10
+    name: Specialist
+  Warrior:
+    abilities:
+    - &id005
+      Alert:
+        name: Alert
+        1: Notice
+      Armsman:
+        name: Armsman
+        1: Stab
+      Assassin:
+        name: Assassin
+        1: Sneak
+      Close Combatant:
+        name: Close Combatant
+        1: *id002
+      Die Hard:
+        name: Die Hard
+      Gunslinger:
+        name: Gunslinger
+        1: Shoot
+      Ironhide:
+        name: Ironhide
+      Savage Fray:
+        name: Savage Fray
+        1: Stab
+      Shocking Assault:
+        name: Shocking Assault
+        1:
+          die: 1d4
+          res:
+            1-3: Stab
+            4: Punch
+      Sniper:
+        name: Sniper
+        1: Shoot
+      Unarmed Combatant:
+        name: Unarmed Combatant
+        1: Punch
+    hd: d6+2
+    mv: 10
+    name: Warrior
+combat_foci: *id005
+combat_skills: *id002
+equipment_packages:
+- Barbarian
+- Blade
+- Thief
+- hacker
+- Gunslinger
+- Soldier
+- Scout
+- Medic
+- Civilian
+- Technician
+non_combat_foci: *id006
+non_combat_skills: *id004
+psychic_skills: *id003

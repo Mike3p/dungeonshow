@@ -1,4 +1,5 @@
 import { getRandomArraySubset, getRandomFromArray } from './array';
+import yaml from 'js-yaml';
 import { roll, getAbilityMod } from './dice';
 import type { Abilities, Ability, Proficiencies, Proficiency } from './generator_dict/ability';
 import type { AbilityChoice, AbilityProgression } from './generator_dict/abilityprogression';
@@ -512,7 +513,7 @@ export class Character {
 	}
 
 	toYaml(): string {
-		return JSON.stringify(this);
+		return yaml.dump(this);
 	}
 }
 

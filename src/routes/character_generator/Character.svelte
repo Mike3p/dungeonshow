@@ -5,9 +5,9 @@
 
 	export let character: Character;
 
-	const blob = new Blob([character.toJson()], { type: 'application/json' });
+	const blob = new Blob([character.toYaml()], { type: 'text/yaml' });
 	const url = URL.createObjectURL(blob);
-	const filename = `${character.name}.json`;
+	const filename = `${character.name}.yaml`;
 
 	function formatItems(items: { [key: string]: GenericItem }) {
 		return Object.values(items)
