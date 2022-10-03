@@ -42,63 +42,59 @@
 	}
 </script>
 
-<form on:submit|preventDefault={handleGenerate} class="flex flex-wrap justify-between gap-6 m-2">
-	<div class="flex gap-2 flex-wrap">
-		<label for="class" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
-			<span>Class</span>
-			<select id="class" bind:value={characterClass}>
-				{#each generator.classes as clazz}
-					<option value={clazz}>{clazz}</option>
-				{/each}
-			</select>
-		</label>
+<form on:submit|preventDefault={handleGenerate} class="flex flex-wrap gap-4 my-4">
+	<label for="class" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
+		<span>Class</span>
+		<select id="class" bind:value={characterClass}>
+			{#each generator.classes as clazz}
+				<option value={clazz}>{clazz}</option>
+			{/each}
+		</select>
+	</label>
 
-		<label
-			for="ethnicity"
-			class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap"
-		>
-			<span>Ethnicity</span>
-			<select id="class" bind:value={ethnicity}>
-				{#each generator.ethnicities as ethnicity}
-					<option value={ethnicity}>{ethnicity}</option>
-				{/each}
-			</select>
-		</label>
+	<label for="ethnicity" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
+		<span>Ethnicity</span>
+		<select id="class" bind:value={ethnicity}>
+			{#each generator.ethnicities as ethnicity}
+				<option value={ethnicity}>{ethnicity}</option>
+			{/each}
+		</select>
+	</label>
 
-		<label for="level" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
-			<span>Level</span>
-			<select id="class" bind:value={level}>
-				{#each generator.levels as lvl}
-					<option value={lvl}>{lvl}</option>
-				{/each}
-			</select>
-		</label>
+	<label for="level" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
+		<span>Level</span>
+		<select id="class" bind:value={level}>
+			{#each generator.levels as lvl}
+				<option value={lvl}>{lvl}</option>
+			{/each}
+		</select>
+	</label>
 
-		<label for="number" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
-			<span>Number</span>
-			<input id="number" type="number" bind:value={number} class="w-14 md:max-w-[73px]" min="1" />
-		</label>
-	</div>
+	<label for="number" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
+		<span>Number</span>
+		<input id="number" type="number" bind:value={number} class="w-14 md:max-w-[73px]" min="1" />
+	</label>
 
-	<div>
-		<button type="button" class="btn btn-filled-warning w-full lg:w-fit" on:click={reset}
-			>Reset</button
-		>
-		<button type="submit" class="btn btn-filled-primary w-full lg:w-fit">Generate</button>
-	</div>
+	<button type="button" class="btn btn-filled-warning w-full md:w-fit" on:click={reset}
+		>Reset</button
+	>
+	<button type="submit" class="btn btn-filled-primary w-full md:w-fit">Generate</button>
 </form>
 
-{#each characters as char}
-	<CharacterComponent character={char} />
-	<button
-		class="btn btn-outline-primary"
-		on:click={() => startEditingCharacter(char)}
-		disabled={$editedCharacter === char}
-	>
-		{#if $editedCharacter === char}
-			Selected for Editor
-		{:else}
-			Select for Editor
-		{/if}
-	</button>
-{/each}
+<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
+	{#each characters as char}
+		<CharacterComponent character={char}>
+			<button
+				class="btn btn-outline-primary"
+				on:click={() => startEditingCharacter(char)}
+				disabled={$editedCharacter === char}
+			>
+				{#if $editedCharacter === char}
+					Selected for Editor
+				{:else}
+					Select for Editor
+				{/if}
+			</button>
+		</CharacterComponent>
+	{/each}
+</div>

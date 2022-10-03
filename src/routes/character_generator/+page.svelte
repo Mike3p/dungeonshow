@@ -10,7 +10,7 @@
 </script>
 
 <h1>Character Generator</h1>
-<div class="m-2">
+<div class="my-4">
 	<label for="generator" class="flex flex-wrap md:flex-nowrap items-baseline gap-1">
 		<span>Generator</span>
 		<select id="generator" class="w-full md:w-fit" bind:value={chosenGenerator}>
