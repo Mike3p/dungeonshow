@@ -19,7 +19,7 @@
 		const skills = Object.values(abilities)
 			.map((a) => {
 				const rank = a.ranks && a.ranks > 1 ? a.ranks : '';
-				return `${a.name} ${rank}`;
+				return `${a.name} ${rank}`.trim();
 			})
 			.join(', ');
 		return skills === '' ? 'None' : skills;
