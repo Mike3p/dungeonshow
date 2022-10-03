@@ -6,24 +6,16 @@ type DataType = {
 
 type Mapping = { [name: string]: GeneratorDict };
 
-async function importDicts() {
-	return (
-		await Promise.all([
-			{ name: 'Base', dict: (await import('$lib/data/generator_basic_acks.yaml')).default },
-			{
-				name: 'Circle of Dawn',
-				dict: (await import('$lib/data/generator_circle_of_dawn.yaml')).default
-			}
-		])
-	).reduce<Mapping>((acc, dict) => {
-		acc[dict.name] = dict.dict as GeneratorDict;
-		return acc;
-	}, {});
+async function importDicts(): Promise<Mapping> {
+	return {
+		Base: (await import('$lib/data/generator_basic_acks.yaml')).default as GeneratorDict,
+		'Circle of Dawn': (await import('$lib/data/generator_circle_of_dawn.yaml'))
+			.default as GeneratorDict
+	};
 }
 
 export async function load(): Promise<DataType> {
-	const generatorDicts = await importDicts();
 	return {
-		generatorDicts: generatorDicts
+		generatorDicts: await importDicts()
 	};
 }
