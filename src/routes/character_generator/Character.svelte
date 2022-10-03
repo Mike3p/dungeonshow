@@ -4,10 +4,16 @@
 	import type { GenericItem } from '$lib/generator_dict/item';
 
 	export let character: Character;
+	$: ({ url, filename } = generateDownloadUrl(character));
 
-	const blob = new Blob([character.toYaml()], { type: 'text/yaml' });
-	const url = URL.createObjectURL(blob);
-	const filename = `${character.name}.yaml`;
+	function generateDownloadUrl(character: Character) {
+		const blob = new Blob([character.toYaml()], { type: 'text/yaml' });
+		URL.revokeObjectURL(url);
+		const newUrl = URL.createObjectURL(blob);
+		const newFilename = `${character.name}.yaml`;
+
+		return { url: newUrl, filename: newFilename };
+	}
 
 	function formatItems(items: { [key: string]: GenericItem }) {
 		return Object.values(items)
