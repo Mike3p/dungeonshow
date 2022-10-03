@@ -17,8 +17,11 @@
 					<a
 						{href}
 						class={href === $page.url.pathname ? '!bg-primary-500' : ''}
-						on:click={() => menuStore.set(false)}>{name}</a
+						data-sveltekit-prefetch
+						on:click={() => menuStore.set(false)}
 					>
+						{name}
+					</a>
 				</li>
 			{/each}
 		</ul>
