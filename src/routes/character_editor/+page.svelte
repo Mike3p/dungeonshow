@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { Character } from '$lib/character';
 	import { editedCharacter, editedCharacterStartingYaml } from '$lib/character_store';
-	import CharacterComponent from '../character_generator/Character.svelte';
+	import { characterEditableKey } from '$lib/context';
+	import { setContext } from 'svelte';
+	import CharacterComponent from '$lib/components/Character.svelte';
+
+	setContext(characterEditableKey, true);
 
 	function handleFile(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
 		let files = event?.currentTarget?.files;

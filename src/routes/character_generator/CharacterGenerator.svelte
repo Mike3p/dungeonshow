@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Character } from '$lib/character';
 	import type { CharacterGenerator } from '$lib/character_generator';
-	import CharacterComponent from './Character.svelte';
+	import CharacterComponent from '$lib/components/Character.svelte';
 	import { editedCharacter, editedCharacterStartingYaml } from '$lib/character_store';
 	import { generatedCharacters } from '$lib/character_store';
 
