@@ -17,7 +17,7 @@
 		"@modyfi/vite-plugin-yaml": "^1.0.3",
 		"@playwright/test": "^1.27.1",
 		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/adapter-node": "1.0.0-next.96",
+		"@sveltejs/adapter-node": "^1.0.0-next.100",
 		"@sveltejs/kit": "next",
 		"@tailwindcss/forms": "^0.5.3",
 		"@types/js-yaml": "^4.0.5",
