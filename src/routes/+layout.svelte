@@ -1,12 +1,12 @@
 <script>
 	import '../theme.postcss';
 	import '../app.css';
-	import '@brainandbones/skeleton/styles/all.css';
+	import '@skeletonlabs/skeleton/styles/all.css';
 
 	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
 	import Nav from './Nav.svelte';
-	import { AppShell, Drawer } from '@brainandbones/skeleton';
+	import { AppShell, Drawer } from '@skeletonlabs/skeleton';
 	import { menuStore } from '$lib/stores';
 </script>
 

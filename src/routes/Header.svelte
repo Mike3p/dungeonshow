@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AppBar, LightSwitch } from '@brainandbones/skeleton';
+	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
 	import { menuStore } from '$lib/stores';
 </script>
 
