@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { menuStore } from '$lib/stores';
+	import { drawerStore } from '@skeletonlabs/skeleton';
 
 	const navOptions = [
 		{ href: '/', name: 'Home' },
@@ -17,8 +17,8 @@
 					<a
 						{href}
 						class={href === $page.url.pathname ? '!bg-primary-500' : ''}
-						data-sveltekit-prefetch
-						on:click={() => menuStore.set(false)}
+						data-sveltekit-preload-data
+						on:click={() => drawerStore.close()}
 					>
 						{name}
 					</a>

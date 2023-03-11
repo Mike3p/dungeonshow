@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
-	import { menuStore } from '$lib/stores';
+	import { AppBar, drawerStore, LightSwitch } from '@skeletonlabs/skeleton';
 </script>
 
 <AppBar>
 	<svelte:fragment slot="lead">
 		<div class="lg:hidden cursor-pointer">
-			<button on:click={() => menuStore.set(true)} tabindex="0">
+			<button on:click={() => drawerStore.open()} tabindex="0">
 				<svg viewBox="0 0 100 80" class="w-6 h-6 m-1">
 					<rect width="100" height="20" rx="10" />
 					<rect y="30" width="100" height="20" rx="10" />

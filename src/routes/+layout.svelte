@@ -6,11 +6,9 @@
 	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
 	import Nav from './Nav.svelte';
-	import { AppShell, Drawer } from '@skeletonlabs/skeleton';
-	import { menuStore } from '$lib/stores';
+	import {AppShell, Drawer} from '@skeletonlabs/skeleton';
 </script>
-
-<Drawer open={menuStore} position="left">
+<Drawer position="left">
 	<Nav />
 </Drawer>
 <AppShell>
