@@ -101,7 +101,7 @@ export class Character {
 
 	private pathName: string;
 
-	// ?
+	// main attr.
 	public ac: number;
 	public acm: number;
 	public hd: number;
