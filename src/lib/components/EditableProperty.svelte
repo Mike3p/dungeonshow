@@ -16,7 +16,7 @@
 </script>
 
 {#if !editable && label}
-	{label}: {prop}
+	<b>{label}</b>: {prop}
 {:else if !editable}
 	{prop}
 {:else if typeof prop === 'string'}
