@@ -39,7 +39,7 @@
 </script>
 
 <h1>Character editor</h1>
-<div class="flex gap-2">
+<div class="flex gap-2 items-center">
 	<Fileinput accept=".yaml,.yml" on:change={handleFile} />
 	<Button type="reset" color="red" on:click={resetInput}>Reset</Button>
 </div>
