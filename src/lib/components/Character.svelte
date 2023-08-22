@@ -3,6 +3,7 @@
 	import type { Abilities } from '$lib/generator_dict/ability';
 	import type { GenericItem } from '$lib/generator_dict/item';
 	import EditableProperty from '$lib/components/EditableProperty.svelte';
+	import Button from './forms/Button.svelte';
 
 	export let character: Character;
 
@@ -15,6 +16,15 @@
 		const newFilename = `${character.name}.yaml`;
 
 		return { url: newUrl, filename: newFilename };
+	}
+
+	function download(url: string, fileName: string) {
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = fileName;
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
 	}
 
 	function formatItems(items: { [key: string]: GenericItem }) {
@@ -115,7 +125,7 @@
 		{/if}
 	</div>
 	<div class="flex flex-col md:flex-row flex-wrap gap-2 justify-items-stretch mt-2">
-		<a class="btn btn-outline-primary" href={url} download={filename}>Export character</a>
+		<Button outline on:click={() => download(url, filename)}>Export character</Button>
 		<slot />
 	</div>
 </div>

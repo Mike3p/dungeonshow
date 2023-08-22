@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { characterEditableKey } from '$lib/context';
 	import { getContext } from 'svelte';
+	import Input from '$lib/components/forms/Input.svelte';
+	import NumberInput from './forms/NumberInput.svelte';
 
 	export let prop: string | number;
 
@@ -16,19 +18,9 @@
 {#if !editable}
 	{prop}
 {:else if typeof prop === 'string'}
-	<input type="text" bind:value={prop} class={classes} />
+	<Input type="string" bind:value={prop} class={`${classes} inline-block`} />
 {:else if typeof prop === 'number'}
-	<input type="number" bind:value={prop} {min} {max} class={classes} />
+	<NumberInput bind:value={prop} {min} {max} class={`${classes} w-14 inline-block`} />
 {:else}
 	{prop}
 {/if}
-
-<style>
-	input {
-		@apply py-0 px-1;
-	}
-
-	input[type='number'] {
-		@apply w-14;
-	}
-</style>

@@ -1,29 +1,37 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { drawerStore } from '@skeletonlabs/skeleton';
+	import { Icon } from 'flowbite-svelte-icons';
+
+	export let position: 'side' | 'bottom' | 'top';
 
 	const navOptions = [
-		{ href: '/', name: 'Home' },
-		{ href: '/character_generator', name: 'Character generator' },
-		{ href: '/character_editor', name: 'Character editor' }
+		{ href: '/', name: 'Home', icon: 'home-solid' },
+		{ href: '/character_generator', name: 'Character generator', icon: 'user-settings-solid' },
+		{ href: '/character_editor', name: 'Character editor', icon: 'user-edit-solid' }
 	];
+
+	$: activeUrl = $page.url.pathname;
 </script>
 
-<aside class="h-full bg-black/5">
-	<nav class="p-4 list-nav h-full">
-		<ul>
-			{#each navOptions as { href, name }}
-				<li>
-					<a
-						{href}
-						class={href === $page.url.pathname ? '!bg-primary-500' : ''}
-						data-sveltekit-preload-data
-						on:click={() => drawerStore.close()}
-					>
-						{name}
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</nav>
-</aside>
+{#if position === 'side'}
+	<aside class="hidden lg:flex shrink-0 flex-col p-2 gap-2">
+		{#each navOptions as { href, name }}
+			<a
+				{href}
+				class={`${
+					href === activeUrl ? 'bg-primary-500 text-white' : ''
+				} rounded-lg px-2 py-1 hover:bg-primary-200`}>{name}</a
+			>
+		{/each}
+	</aside>
+{:else}
+	<div class={`flex justify-center gap-2 ${position === 'bottom' && 'lg:hidden'}`}>
+		{#each navOptions as { href, name, icon }}
+			<a
+				{href}
+				class={`flex flex-col p-2 items-center ${href === activeUrl ? 'bg-primary-500' : ''}`}
+				data-sveltekit-preload-data>{name}<Icon name={icon} /></a
+			>
+		{/each}
+	</div>
+{/if}
