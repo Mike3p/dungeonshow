@@ -45,56 +45,45 @@
 </script>
 
 <div class="p-2 card flex flex-col justify-between">
-	<div>
-		<p>
-			<b>
-				<EditableProperty bind:prop={character.name} class="max-w-[200px]" />
-			</b>: {character.ethnicity}
-
+	<div class="flex flex-col gap-2">
+		<div>
+			<EditableProperty label="Name" bind:prop={character.name} size="normal" />
+			{character.ethnicity}
 			{character.class_name}
-			<EditableProperty bind:prop={character.level} min={1} max={character.maxlevel} />: Str: <EditableProperty
-				bind:prop={character.strength}
-			/>, Int: <EditableProperty bind:prop={character.intelligence} />, Wis: <EditableProperty
-				bind:prop={character.wisdom}
-			/>, Dex: <EditableProperty bind:prop={character.dexterity} />, Con: <EditableProperty
-				bind:prop={character.constitution}
-			/>, Cha: <EditableProperty bind:prop={character.charisma} />;
-			<b>XP</b>: <EditableProperty bind:prop={character.experiencepoints} class="!w-24" />
-		</p>
-		<p>
-			<b>MV</b><EditableProperty bind:prop={character.mv} />,
-			<b>AC</b>
-			<EditableProperty bind:prop={character.ac} />,
-			<b>HD</b>
-			<EditableProperty bind:prop={character.hd} />,
-			<b>HP</b>
-			<EditableProperty bind:prop={character.hp} />,
-			<b>SP</b>
-			<EditableProperty bind:prop={character.surprise} />,
-			<b>INI</b>
-			<EditableProperty bind:prop={character.initiative} />,
-			<b>PP</b>
-			<EditableProperty bind:prop={character.PP} />,
-			<b>PD</b>
-			<EditableProperty bind:prop={character.PD} />,
-			<b>BB</b>
-			<EditableProperty bind:prop={character.BB} />,
-			<b>SW</b>
-			<EditableProperty bind:prop={character.SW} />,
-			<b>S</b>
-			<EditableProperty bind:prop={character.S} />,
-			<b>AL</b>
-			<EditableProperty bind:prop={character.alignment} class="max-w-[40px]" />,
-		</p>
-		<p>
+			<EditableProperty label="Lvl" bind:prop={character.level} min={1} max={character.maxlevel} />
+		</div>
+		<div class="flex flex-wrap gap-2">
+			<EditableProperty label="Str" bind:prop={character.strength} />
+			<EditableProperty label="Int" bind:prop={character.intelligence} />
+			<EditableProperty label="Wis" bind:prop={character.wisdom} />
+			<EditableProperty label="Dex" bind:prop={character.dexterity} />
+			<EditableProperty label="Con" bind:prop={character.constitution} />
+			<EditableProperty label="Cha" bind:prop={character.charisma} />
+			<EditableProperty label="XP" bind:prop={character.experiencepoints} />
+		</div>
+		<div class="flex flex-wrap gap-2">
+			<EditableProperty label="MV" bind:prop={character.mv} />
+			<EditableProperty label="AC" bind:prop={character.ac} />
+			<EditableProperty label="HP" bind:prop={character.hd} />
+			<EditableProperty label="MV" bind:prop={character.hp} />
+			<EditableProperty label="SP" bind:prop={character.surprise} />
+			<EditableProperty label="INI" bind:prop={character.initiative} />
+			<EditableProperty label="PP" bind:prop={character.PP} />
+			<EditableProperty label="PD" bind:prop={character.PD} />
+			<EditableProperty label="BB" bind:prop={character.BB} />
+			<EditableProperty label="SW" bind:prop={character.SW} />
+			<EditableProperty label="S" bind:prop={character.S} />
+			<EditableProperty label="AL" bind:prop={character.alignment} />
+		</div>
+		<div>
 			<b>Attacks:</b> (<b>Melee:</b>
 			{character.meleethrow}+, {character.meleedamage} dmg, <b>Missile:</b>
 			{character.missilethrow}+, {character.missiledamage} dmg)
-		</p>
-		<p>
+		</div>
+		<div>
 			<b>Weapons:</b>
 			{formatItems(character.weapons)}
-		</p>
+		</div>
 		<p><b>Armor:</b> {formatItems(character.armor)}</p>
 		<p><b>Class Abilities:</b> {formatAbilities(character.abilities)}</p>
 		<p><b>Proficiencies:</b> {formatAbilities(character.proficiencies)}</p>
@@ -106,22 +95,24 @@
 			Caster!
 		{/if}
 		{#if character.personality}
-			<p class="flex">
-				<b>Personality:</b>
-				<EditableProperty bind:prop={character.personality} class="flex-grow" />
-			</p>
+			<div>
+				<EditableProperty label="Personality" bind:prop={character.personality} size="fullwidth" />
+			</div>
 		{/if}
 		{#if character.description}
-			<p class="flex">
-				<b>Description:</b>
-				<EditableProperty bind:prop={character.description} class="flex-grow" />
-			</p>
+			<div>
+				<EditableProperty label="Description" bind:prop={character.description} size="fullwidth" />
+			</div>
 		{/if}
 		{#if character.features}
-			<p><b>Features:</b> <EditableProperty bind:prop={character.features} /></p>
+			<div>
+				<EditableProperty label="Features" bind:prop={character.features} size="fullwidth" />
+			</div>
 		{/if}
 		{#if character.style}
-			<p><b>Style:</b> <EditableProperty bind:prop={character.style} /></p>
+			<div>
+				<EditableProperty label="Style" bind:prop={character.style} size="fullwidth" />
+			</div>
 		{/if}
 	</div>
 	<div class="flex flex-col md:flex-row flex-wrap gap-2 justify-items-stretch mt-2">

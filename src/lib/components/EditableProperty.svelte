@@ -9,18 +9,20 @@
 	export let min: number | null = null;
 	export let max: number | null = null;
 
-	let classes = '';
-	export { classes as class };
+	export let size: 'small' | 'fullwidth' | 'normal' = 'small';
+	export let label: string = '';
 
 	const editable = getContext(characterEditableKey);
 </script>
 
-{#if !editable}
+{#if !editable && label}
+	{label}: {prop}
+{:else if !editable}
 	{prop}
 {:else if typeof prop === 'string'}
-	<Input type="string" bind:value={prop} class={`${classes} inline-block`} />
+	<Input {label} {size} bind:value={prop} />
 {:else if typeof prop === 'number'}
-	<NumberInput bind:value={prop} {min} {max} class={`${classes} w-14 inline-block`} />
+	<NumberInput {label} bind:value={prop} {min} {max} />
 {:else}
 	{prop}
 {/if}

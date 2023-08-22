@@ -4,25 +4,25 @@
 
 html,
 body {
-	@apply h-full overflow-hidden;
+  @apply h-full overflow-hidden;
 }
 
 h1 {
-	@apply text-2xl;
+  @apply text-2xl;
 }
 
 @layer base {
-	:root {
-		--color-primary-50: 240 249 244;
-		--color-primary-100: 219 240 226;
-		--color-primary-200: 186 224 200;
-		--color-primary-300: 141 200 168;
-		--color-primary-400: 100 175 136;
-		--color-primary-500: 59 142 102;
-		--color-primary-600: 42 113 80;
-		--color-primary-700: 33 91 65;
-		--color-primary-800: 28 73 53;
-		--color-primary-900: 24 60 44;
-		--color-primary-950: 13 33 25;
-	}
+  :root {
+    --color-primary-50: 243 246 250;
+    --color-primary-100: 232 241 247;
+    --color-primary-200: 214 227 239;
+    --color-primary-300: 188 208 229;
+    --color-primary-400: 161 183 216;
+    --color-primary-500: 145 166 207;
+    --color-primary-600: 112 132 187;
+    --color-primary-700: 95 112 163;
+    --color-primary-800: 78 91 133;
+    --color-primary-900: 68 79 107;
+    --color-primary-950: 40 46 62;
+  }
 }

@@ -11,7 +11,7 @@
 		{...$$restProps}
 		class:rounded-lg={!label}
 		class:rounded-r-lg={label}
-		class="focus:ring-primary-500 focus:border-primary-500 p-1 min-w-20 w-full md:w-fit"
+		class="focus:ring-primary-500 focus:border-primary-500 p-1 min-w-[4rem] w-full md:w-fit"
 		bind:value
 	>
 		{#each items as item}

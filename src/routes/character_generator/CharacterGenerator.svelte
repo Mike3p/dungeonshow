@@ -45,7 +45,7 @@
 	}
 </script>
 
-<form on:submit|preventDefault={handleGenerate} class="flex flex-wrap gap-4 my-4">
+<form on:submit|preventDefault={handleGenerate} class="flex flex-wrap gap-2">
 	<Select
 		id="class"
 		label="Class"

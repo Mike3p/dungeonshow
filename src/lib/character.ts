@@ -113,7 +113,6 @@ export class Character {
 	public initiative: number;
 	public numberofcleaves: number;
 	public henchmen: number;
-	public mod_mv: number;
 	public PP: number;
 	public PD: number;
 	public BB: number;

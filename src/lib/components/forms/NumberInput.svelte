@@ -12,7 +12,7 @@
 		class:rounded-lg={!label}
 		class:rounded-r-lg={label}
 		bind:value
-		class="focus:ring-primary-500 focus:border-primary-500 p-1 w-full md:w-10"
+		class="focus:ring-primary-500 focus:border-primary-500 p-1 w-20"
 		on:change
 	/></WithLabel
 >
