@@ -18,7 +18,7 @@
 		{#each navOptions as { href, name, icon }}
 			<a
 				{href}
-				class={`flex flex-col p-2 items-center text-white ${
+				class={`flex flex-col p-2 items-center justify-center text-white ${
 					href === activeUrl ? 'bg-primary-500' : ''
 				}`}
 				data-sveltekit-preload-data>{name}<Icon name={icon} /></a
@@ -30,10 +30,10 @@
 		{#each navOptions as { href, name, icon }}
 			<a
 				{href}
-				class={`flex flex-col p-2 items-center text-white ${
+				class={`flex flex-col p-2 items-center justify-center text-white ${
 					href === activeUrl ? 'bg-primary-500' : ''
 				}`}
-				data-sveltekit-preload-data>{name}<Icon name={icon} /></a
+				data-sveltekit-preload-data><Icon name={icon} />{name}</a
 			>
 		{/each}
 	</div>
