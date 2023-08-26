@@ -34,5 +34,6 @@
 <button
 	{...$$restProps}
 	on:click
-	class={`${variantClasses} disabled:opacity-60 disabled:cursor-not-allowed`}><slot /></button
+	class={`${variantClasses} disabled:opacity-60 disabled:cursor-not-allowed flex justify-center`}
+	><slot /></button
 >
