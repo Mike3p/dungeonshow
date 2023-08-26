@@ -14,22 +14,24 @@
 </script>
 
 {#if position === 'bottom'}
-	<div class="flex justify-center gap-2 lg:hidden bg-primary-400 absolute bottom-0 w-full">
-		{#each navOptions as { href, name, icon }}
-			<a
-				{href}
-				class={`flex flex-col p-2 items-center text-white ${
-					href === activeUrl ? 'bg-primary-500' : ''
-				}`}
-				data-sveltekit-preload-data
-			>
-				<Icon name={icon} />
-				<span>{name}</span>
-			</a>
-		{/each}
+	<div class="fixed h-16 lg:hidden bg-primary-400 bottom-0 w-full">
+		<div class="grid max-w-lg mx-auto grid-cols-3 h-full">
+			{#each navOptions as { href, name, icon }}
+				<a
+					{href}
+					class={`flex flex-col p-2 items-center text-white ${
+						href === activeUrl ? 'bg-primary-500' : ''
+					}`}
+					data-sveltekit-preload-data
+				>
+					<Icon name={icon} />
+					<span>{name}</span>
+				</a>
+			{/each}
+		</div>
 	</div>
 {:else}
-	<div class="justify-center gap-2 hidden lg:flex bg-primary-400">
+	<div class="hidden lg:grid grid-cols-3 justify-center bg-primary-400">
 		{#each navOptions as { href, name, icon }}
 			<a
 				{href}
