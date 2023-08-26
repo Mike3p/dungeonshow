@@ -59,7 +59,7 @@
 			<EditableProperty label="Dex" bind:prop={character.dexterity} />
 			<EditableProperty label="Con" bind:prop={character.constitution} />
 			<EditableProperty label="Cha" bind:prop={character.charisma} />
-			<EditableProperty label="XP" bind:prop={character.experiencepoints} />
+			<EditableProperty label="XP" bind:prop={character.experiencepoints} size="normal" />
 		</div>
 		<div class="flex flex-wrap gap-1">
 			<EditableProperty label="MV" bind:prop={character.mv} />

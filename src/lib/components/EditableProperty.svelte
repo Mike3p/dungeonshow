@@ -22,7 +22,7 @@
 {:else if typeof prop === 'string'}
 	<Input {label} {size} bind:value={prop} />
 {:else if typeof prop === 'number'}
-	<NumberInput {label} bind:value={prop} {min} {max} />
+	<NumberInput {label} bind:value={prop} {size} {min} {max} />
 {:else}
 	{prop}
 {/if}
