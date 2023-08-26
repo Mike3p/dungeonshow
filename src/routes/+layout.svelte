@@ -7,7 +7,7 @@
 </script>
 
 <div class="bg-slate-300 h-full pb-16 lg:pb-0">
-	<div class="overflow-auto h-full">
+	<div class="overflow-auto h-full stable-scroll">
 		<div class="flex flex-col w-full h-full max-w-7xl mx-auto">
 			<Header />
 			<div class="flex flex-1">
@@ -20,3 +20,9 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.stable-scroll {
+		scrollbar-gutter: stable;
+	}
+</style>
