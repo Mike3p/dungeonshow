@@ -40,12 +40,12 @@
 
 <h1>Character editor</h1>
 <div class="flex gap-2 items-center">
-	<Fileinput accept=".yaml,.yml" on:change={handleFile} />
+	<Fileinput label="Import character" accept=".yaml,.yml" on:change={handleFile} />
 	<Button type="reset" color="red" on:click={resetInput}>Reset</Button>
 </div>
 
 {#if $editedCharacter}
-	<div class="mt-4">
+	<div class="mt-2">
 		<CharacterComponent character={$editedCharacter}>
 			<Button color="red" outline on:click={resetCharacter}>Reset character</Button>
 			<Button on:click={levelup}>Level up character</Button>
