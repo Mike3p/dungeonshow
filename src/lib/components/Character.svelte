@@ -45,14 +45,14 @@
 </script>
 
 <div class="p-2 flex flex-col justify-between rounded-lg border">
-	<div class="flex flex-col gap-2">
+	<div class="flex flex-col gap-1">
 		<div>
 			<EditableProperty label="Name" bind:prop={character.name} size="normal" />
 			{character.ethnicity}
 			{character.class_name}
 			<EditableProperty label="Lvl" bind:prop={character.level} min={1} max={character.maxlevel} />
 		</div>
-		<div class="flex flex-wrap gap-2">
+		<div class="flex flex-wrap gap-1">
 			<EditableProperty label="Str" bind:prop={character.strength} />
 			<EditableProperty label="Int" bind:prop={character.intelligence} />
 			<EditableProperty label="Wis" bind:prop={character.wisdom} />
@@ -61,7 +61,7 @@
 			<EditableProperty label="Cha" bind:prop={character.charisma} />
 			<EditableProperty label="XP" bind:prop={character.experiencepoints} />
 		</div>
-		<div class="flex flex-wrap gap-2">
+		<div class="flex flex-wrap gap-1">
 			<EditableProperty label="MV" bind:prop={character.mv} />
 			<EditableProperty label="AC" bind:prop={character.ac} />
 			<EditableProperty label="HP" bind:prop={character.hd} />
