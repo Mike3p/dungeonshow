@@ -73,7 +73,7 @@
 	<Button type="submit" color="primary">Generate</Button>
 </form>
 
-<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
+<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2 mt-4">
 	{#each characters as char}
 		<CharacterComponent character={char}>
 			<Button
