@@ -6,8 +6,8 @@
 	import Nav from './Nav.svelte';
 </script>
 
-<div class="flex flex-col items-center h-screen w-screen overflow-auto bg-slate-300">
-	<div class="flex flex-col w-full flex-1 max-w-7xl bg-white">
+<div class="bg-slate-300 h-full pb-[60px] lg:pb-0">
+	<div class="flex flex-col w-full h-full flex-1 max-w-7xl mx-auto overflow-auto bg-white">
 		<Header />
 		<div class="flex flex-1">
 			<main class="p-4 flex-1">

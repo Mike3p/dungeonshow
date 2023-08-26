@@ -6,23 +6,26 @@
 
 	const navOptions = [
 		{ href: '/', name: 'Home', icon: 'home-solid' },
-		{ href: '/character_generator', name: 'Character generator', icon: 'user-settings-solid' },
-		{ href: '/character_editor', name: 'Character editor', icon: 'user-edit-solid' }
+		{ href: '/character_generator', name: 'Generator', icon: 'user-settings-solid' },
+		{ href: '/character_editor', name: 'Editor', icon: 'user-edit-solid' }
 	];
 
 	$: activeUrl = $page.url.pathname;
 </script>
 
 {#if position === 'bottom'}
-	<div class="flex justify-center gap-2 lg:hidden bg-primary-400">
+	<div class="flex justify-center gap-2 lg:hidden bg-primary-400 absolute bottom-0 w-full">
 		{#each navOptions as { href, name, icon }}
 			<a
 				{href}
-				class={`flex flex-col p-2 items-center justify-center text-white ${
+				class={`flex flex-col p-2 items-center text-white ${
 					href === activeUrl ? 'bg-primary-500' : ''
 				}`}
-				data-sveltekit-preload-data>{name}<Icon name={icon} /></a
+				data-sveltekit-preload-data
 			>
+				<Icon name={icon} />
+				<span>{name}</span>
+			</a>
 		{/each}
 	</div>
 {:else}
@@ -33,8 +36,11 @@
 				class={`flex flex-col p-2 items-center justify-center text-white ${
 					href === activeUrl ? 'bg-primary-500' : ''
 				}`}
-				data-sveltekit-preload-data><Icon name={icon} />{name}</a
+				data-sveltekit-preload-data
 			>
+				<Icon name={icon} />
+				<span>{name}</span>
+			</a>
 		{/each}
 	</div>
 {/if}
