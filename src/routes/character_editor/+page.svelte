@@ -45,8 +45,10 @@
 </div>
 
 {#if $editedCharacter}
-	<CharacterComponent character={$editedCharacter}>
-		<Button color="red" outline on:click={resetCharacter}>Reset character</Button>
-		<Button on:click={levelup}>Level up character</Button>
-	</CharacterComponent>
+	<div class="mt-4">
+		<CharacterComponent character={$editedCharacter}>
+			<Button color="red" outline on:click={resetCharacter}>Reset character</Button>
+			<Button on:click={levelup}>Level up character</Button>
+		</CharacterComponent>
+	</div>
 {/if}
