@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import type { Character } from '$lib/character';
 	import type { CharacterGenerator } from '$lib/character_generator';
 	import CharacterComponent from '$lib/components/Character.svelte';
@@ -7,6 +8,7 @@
 	import Select from '$lib/components/forms/Select.svelte';
 	import Button from '$lib/components/forms/Button.svelte';
 	import NumberInput from '$lib/components/forms/NumberInput.svelte';
+	import { Icon } from 'flowbite-svelte-icons';
 
 	export let generator: CharacterGenerator;
 
@@ -88,6 +90,11 @@
 					Select for Editor
 				{/if}
 			</Button>
+			{#if $editedCharacter === char}
+				<Button on:click={() => goto('/character_editor')}>
+					<Icon name="user-edit-solid" />
+				</Button>
+			{/if}
 		</CharacterComponent>
 	{/each}
 </div>
