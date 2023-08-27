@@ -3,6 +3,7 @@
 	import { Icon } from 'flowbite-svelte-icons';
 
 	export let position: 'bottom' | 'top';
+	export let hidden = false;
 
 	const navOptions = [
 		{ href: '/', name: 'Home', icon: 'home-solid' },
@@ -15,7 +16,9 @@
 
 <div
 	class="{position === 'bottom'
-		? 'fixed lg:hidden bottom-0 w-full h-16'
+		? `fixed lg:hidden ${
+				hidden ? '-bottom-16' : 'bottom-0'
+		  } w-full h-16 transition-bottom duration-500`
 		: 'hidden lg:grid h-full'}  bg-primary-400"
 >
 	<div class="grid max-w-lg mx-auto grid-cols-3 h-full font-medium">

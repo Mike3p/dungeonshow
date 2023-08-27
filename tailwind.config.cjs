@@ -23,6 +23,9 @@ module.exports = {
 					900: 'rgb(var(--color-primary-900))',
 					950: 'rgb(var(--color-primary-950))'
 				}
+			},
+			transitionProperty: {
+				bottom: 'bottom'
 			}
 		}
 	},
