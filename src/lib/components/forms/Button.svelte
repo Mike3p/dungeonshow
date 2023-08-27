@@ -34,6 +34,6 @@
 <button
 	{...$$restProps}
 	on:click
-	class={`${variantClasses} disabled:opacity-60 disabled:cursor-not-allowed flex justify-center`}
+	class={`${variantClasses} disabled:opacity-60 disabled:cursor-not-allowed flex gap-2 justify-center`}
 	><slot /></button
 >

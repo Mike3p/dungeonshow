@@ -78,21 +78,18 @@
 <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2 mt-4">
 	{#each characters as char}
 		<CharacterComponent character={char}>
-			<Button
-				color="primary"
-				variant="outlined"
-				on:click={() => startEditingCharacter(char)}
-				disabled={$editedCharacter === char}
-			>
-				{#if $editedCharacter === char}
-					Selected for Editor
-				{:else}
+			{#if $editedCharacter !== char}
+				<Button
+					color="primary"
+					variant="outlined"
+					on:click={() => startEditingCharacter(char)}
+					disabled={$editedCharacter === char}
+				>
 					Select for Editor
-				{/if}
-			</Button>
-			{#if $editedCharacter === char}
+				</Button>
+			{:else}
 				<Button on:click={() => goto('/character_editor')}>
-					<Icon name="user-edit-solid" />
+					<Icon name="user-edit-solid" /> Edit Character
 				</Button>
 			{/if}
 		</CharacterComponent>
