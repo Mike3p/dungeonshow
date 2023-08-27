@@ -44,7 +44,7 @@
 	}
 </script>
 
-<div class="p-2 flex flex-col justify-between rounded-lg border">
+<div class="p-2 flex flex-col justify-between rounded-lg border text-black dark:text-white">
 	<div class="flex flex-col gap-1">
 		<div class="flex flex-wrap gap-1">
 			<EditableProperty label="Name" bind:prop={character.name} size="normal" />

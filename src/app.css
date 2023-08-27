@@ -8,7 +8,11 @@ body {
 }
 
 h1 {
-	@apply text-2xl;
+	@apply text-2xl dark:text-white;
+}
+
+.input {
+	@apply dark:bg-slate-600 dark:text-white border border-slate-400 focus:ring-primary-500 dark:focus:ring-primary-600 focus:border-primary-500 p-1 leading-none;
 }
 
 @layer base {
