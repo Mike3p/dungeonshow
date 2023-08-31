@@ -7,6 +7,10 @@ body {
 	@apply h-full overflow-hidden;
 }
 
+body * {
+	@apply transition-colors duration-200;
+}
+
 h1 {
 	@apply text-2xl dark:text-white;
 }
