@@ -14,7 +14,7 @@
 	}
 </script>
 
-<div class="bg-slate-300 dark:bg-slate-900 h-full {hideBottomNav ? 'pb-0' : 'pb-16'} lg:pb-0">
+<div class="bg-slate-300 dark:bg-slate-900 h-full">
 	<div class="overflow-auto h-full xl:stable-scroll" on:scroll={handleScroll}>
 		<div class="flex flex-col w-full h-full max-w-5xl mx-auto">
 			<Header />
