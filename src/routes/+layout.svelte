@@ -1,14 +1,9 @@
 <script lang="ts">
 	import '../app.css';
 
-	import { createDarkModeStore, themeContext } from '$lib/stores/darkMode';
-	import { setContext } from 'svelte';
 	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
 	import Nav from './Nav.svelte';
-
-	const darkMode = createDarkModeStore(false);
-	setContext(themeContext, darkMode);
 
 	let lastScrollTop = 0;
 	let hideBottomNav = false;
@@ -19,10 +14,7 @@
 	}
 </script>
 
-<div
-	class:dark={$darkMode}
-	class="bg-slate-300 dark:bg-slate-900 h-full {hideBottomNav ? 'pb-0' : 'pb-16'} lg:pb-0"
->
+<div class="bg-slate-300 dark:bg-slate-900 h-full {hideBottomNav ? 'pb-0' : 'pb-16'} lg:pb-0">
 	<div class="overflow-auto h-full xl:stable-scroll" on:scroll={handleScroll}>
 		<div class="flex flex-col w-full h-full max-w-5xl mx-auto">
 			<Header />
