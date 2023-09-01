@@ -8,7 +8,8 @@ body {
 }
 
 body * {
-	@apply transition-colors duration-200;
+	transition-property: background, background-color, background-image, border;
+	transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 h1 {
