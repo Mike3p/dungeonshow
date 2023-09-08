@@ -38,6 +38,8 @@
 	}
 </script>
 
+<svelte:head><title>Character Editor</title></svelte:head>
+
 <h1>Character editor</h1>
 <div class="flex gap-2 items-center">
 	<Fileinput label="Import character" accept=".yaml,.yml" on:change={handleFile} />
