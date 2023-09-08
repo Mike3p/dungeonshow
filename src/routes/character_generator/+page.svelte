@@ -10,6 +10,8 @@
 	$: generator = new CharacterGenerator(data.generatorDicts[chosenGenerator]);
 </script>
 
+<svelte:head><title>Character Generator</title></svelte:head>
+
 <h1>Character Generator</h1>
 <div class="mb-1">
 	<Select
