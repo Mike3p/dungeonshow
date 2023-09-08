@@ -1,29 +1,40 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { drawerStore } from '@skeletonlabs/skeleton';
+	import { Icon } from 'flowbite-svelte-icons';
+
+	export let position: 'bottom' | 'top';
+	export let hidden = false;
 
 	const navOptions = [
-		{ href: '/', name: 'Home' },
-		{ href: '/character_generator', name: 'Character generator' },
-		{ href: '/character_editor', name: 'Character editor' }
+		{ href: '/', name: 'Home', icon: 'home-solid' },
+		{ href: '/character_generator', name: 'Generator', icon: 'user-settings-solid' },
+		{ href: '/character_editor', name: 'Editor', icon: 'user-edit-solid' }
 	];
+
+	$: activeUrl = $page.url.pathname;
 </script>
 
-<aside class="h-full bg-black/5">
-	<nav class="p-4 list-nav h-full">
-		<ul>
-			{#each navOptions as { href, name }}
-				<li>
-					<a
-						{href}
-						class={href === $page.url.pathname ? '!bg-primary-500' : ''}
-						data-sveltekit-preload-data
-						on:click={() => drawerStore.close()}
-					>
-						{name}
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</nav>
-</aside>
+<div
+	class="{position === 'bottom'
+		? `fixed lg:hidden ${
+				hidden ? '-bottom-16' : 'bottom-0'
+		  } w-full h-16 transition-bottom duration-500`
+		: 'hidden lg:grid h-full'}  bg-primary-400 dark:bg-primary-800"
+>
+	<div class="grid max-w-lg mx-auto grid-cols-3 h-full font-medium">
+		{#each navOptions as { href, name, icon }}
+			<a
+				{href}
+				class={`flex flex-col p-2 items-center justify-center text-white ${
+					href === activeUrl
+						? 'bg-primary-600 hover:bg-primary-600 dark:bg-primary-700 hover:dark:bg-primary-700'
+						: 'hover:bg-primary-500 dark:hover:bg-primary-500'
+				}`}
+				data-sveltekit-preload-data
+			>
+				<Icon name={icon} />
+				<span>{name}</span>
+			</a>
+		{/each}
+	</div>
+</div>

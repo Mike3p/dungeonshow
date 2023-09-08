@@ -4,11 +4,13 @@
 	import { characterEditableKey } from '$lib/context';
 	import { setContext } from 'svelte';
 	import CharacterComponent from '$lib/components/Character.svelte';
+	import Fileinput from '$lib/components/forms/Fileinput.svelte';
+	import Button from '$lib/components/forms/Button.svelte';
 
 	setContext(characterEditableKey, true);
 
-	function handleFile(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
-		let files = event?.currentTarget?.files;
+	function handleFile(event: Event) {
+		let files = (event?.currentTarget as unknown as { files: File[] }).files;
 		let json = files ? files[0] : null;
 		if (json) {
 			let reader = new FileReader();
@@ -37,14 +39,16 @@
 </script>
 
 <h1>Character editor</h1>
-<form class="flex gap-2 mb-2">
-	<input type="file" class="max-w-fit" accept=".yaml,.yml" on:change={handleFile} />
-	<button type="reset" class="btn btn-filled-warning" on:click={resetInput}>Reset</button>
-</form>
+<div class="flex gap-2 items-center">
+	<Fileinput label="Import character" accept=".yaml,.yml" on:change={handleFile} />
+	<Button type="reset" color="red" on:click={resetInput}>Reset</Button>
+</div>
 
 {#if $editedCharacter}
-	<CharacterComponent character={$editedCharacter}>
-		<button class="btn btn-outline-accent" on:click={resetCharacter}>Reset character</button>
-		<button class="btn btn-filled-primary" on:click={levelup}>Level up character</button>
-	</CharacterComponent>
+	<div class="mt-2">
+		<CharacterComponent character={$editedCharacter}>
+			<Button color="red" outline on:click={resetCharacter}>Reset character</Button>
+			<Button on:click={levelup}>Level up character</Button>
+		</CharacterComponent>
+	</div>
 {/if}

@@ -1,21 +1,30 @@
-<script>
-	import '../theme.postcss';
+<script lang="ts">
 	import '../app.css';
-	import '@skeletonlabs/skeleton/styles/all.css';
 
 	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
 	import Nav from './Nav.svelte';
-	import {AppShell, Drawer} from '@skeletonlabs/skeleton';
+
+	let lastScrollTop = 0;
+	let hideBottomNav = false;
+	function handleScroll(event: UIEvent & { currentTarget: EventTarget & HTMLDivElement }) {
+		const scrollTop = event.currentTarget?.scrollTop;
+		hideBottomNav = scrollTop > lastScrollTop;
+		lastScrollTop = scrollTop;
+	}
 </script>
-<Drawer position="left">
-	<Nav />
-</Drawer>
-<AppShell>
-	<svelte:fragment slot="header"><Header /></svelte:fragment>
-	<div slot="sidebarLeft" class="hidden lg:block h-full"><Nav /></div>
-	<div slot="default" class="p-4">
-		<slot />
+
+<div class="bg-slate-300 dark:bg-slate-900 h-full">
+	<div class="overflow-auto h-full xl:stable-scroll" on:scroll={handleScroll}>
+		<div class="flex flex-col w-full h-full max-w-5xl mx-auto">
+			<Header />
+			<div class="flex flex-1">
+				<main class="p-4 flex-1 bg-white dark:bg-slate-800">
+					<slot />
+				</main>
+			</div>
+			<Footer />
+			<Nav position="bottom" hidden={hideBottomNav} />
+		</div>
 	</div>
-	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
-</AppShell>
+</div>

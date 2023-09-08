@@ -1,9 +1,14 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import type { Character } from '$lib/character';
 	import type { CharacterGenerator } from '$lib/character_generator';
 	import CharacterComponent from '$lib/components/Character.svelte';
 	import { editedCharacter, editedCharacterStartingYaml } from '$lib/character_store';
 	import { generatedCharacters } from '$lib/character_store';
+	import Select from '$lib/components/forms/Select.svelte';
+	import Button from '$lib/components/forms/Button.svelte';
+	import NumberInput from '$lib/components/forms/NumberInput.svelte';
+	import { Icon } from 'flowbite-svelte-icons';
 
 	export let generator: CharacterGenerator;
 
@@ -42,59 +47,51 @@
 	}
 </script>
 
-<form on:submit|preventDefault={handleGenerate} class="flex flex-wrap gap-4 my-4">
-	<label for="class" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
-		<span>Class</span>
-		<select id="class" bind:value={characterClass}>
-			{#each generator.classes as clazz}
-				<option value={clazz}>{clazz}</option>
-			{/each}
-		</select>
-	</label>
+<form on:submit|preventDefault={handleGenerate} class="flex flex-wrap gap-1 items-center">
+	<Select
+		id="class"
+		label="Class"
+		bind:value={characterClass}
+		items={generator.classes.map((cls) => ({ name: cls, value: cls }))}
+	/>
 
-	<label for="ethnicity" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
-		<span>Ethnicity</span>
-		<select id="class" bind:value={ethnicity}>
-			{#each generator.ethnicities as ethnicity}
-				<option value={ethnicity}>{ethnicity}</option>
-			{/each}
-		</select>
-	</label>
+	<Select
+		id="class"
+		label="Ethnicity"
+		bind:value={ethnicity}
+		items={generator.ethnicities.map((eth) => ({ value: eth, name: eth }))}
+	/>
 
-	<label for="level" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
-		<span>Level</span>
-		<select id="class" bind:value={level}>
-			{#each generator.levels as lvl}
-				<option value={lvl}>{lvl}</option>
-			{/each}
-		</select>
-	</label>
+	<Select
+		id="class"
+		label="Level"
+		bind:value={level}
+		items={generator.levels.map((lvl) => ({ name: lvl.toString(), value: lvl }))}
+	/>
 
-	<label for="number" class="flex items-baseline w-full md:w-fit gap-1 flex-wrap md:flex-nowrap">
-		<span>Number</span>
-		<input id="number" type="number" bind:value={number} class="w-14 md:max-w-[73px]" min="1" />
-	</label>
+	<NumberInput label="Number" id="number" bind:value={number} min="1" />
 
-	<button type="button" class="btn btn-filled-warning w-full md:w-fit" on:click={reset}
-		>Reset</button
-	>
-	<button type="submit" class="btn btn-filled-primary w-full md:w-fit">Generate</button>
+	<Button type="button" color="red" on:click={reset}>Reset</Button>
+	<Button type="submit" color="primary">Generate</Button>
 </form>
 
-<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
+<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2 mt-4">
 	{#each characters as char}
 		<CharacterComponent character={char}>
-			<button
-				class="btn btn-outline-primary"
-				on:click={() => startEditingCharacter(char)}
-				disabled={$editedCharacter === char}
-			>
-				{#if $editedCharacter === char}
-					Selected for Editor
-				{:else}
+			{#if $editedCharacter !== char}
+				<Button
+					color="primary"
+					variant="outlined"
+					on:click={() => startEditingCharacter(char)}
+					disabled={$editedCharacter === char}
+				>
 					Select for Editor
-				{/if}
-			</button>
+				</Button>
+			{:else}
+				<Button on:click={() => goto('/character_editor')}>
+					<Icon name="user-edit-solid" /> Edit Character
+				</Button>
+			{/if}
 		</CharacterComponent>
 	{/each}
 </div>
