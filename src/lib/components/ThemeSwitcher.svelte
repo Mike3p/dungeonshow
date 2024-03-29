@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { theme } from '$lib/stores/theme';
 	import { BROWSER } from 'esm-env';
-	import { Icon } from 'flowbite-svelte-icons';
+	import { SunOutline, MoonOutline} from 'flowbite-svelte-icons';
 	import { onDestroy } from 'svelte';
 
 	function toggle() {
@@ -37,9 +37,9 @@
 <button on:click={toggle} class="text-white w-8 mx-4 h-full">
 	{#if BROWSER}
 		{#if $theme.current === 'dark'}
-			<Icon name="sun-outline" />
+            <SunOutline/>
 		{:else}
-			<Icon name="moon-outline" />
+            <MoonOutline/>
 		{/if}
 	{/if}
 </button>

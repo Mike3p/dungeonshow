@@ -8,7 +8,7 @@
 	import Select from '$lib/components/forms/Select.svelte';
 	import Button from '$lib/components/forms/Button.svelte';
 	import NumberInput from '$lib/components/forms/NumberInput.svelte';
-	import { Icon } from 'flowbite-svelte-icons';
+	import { UserEditSolid } from 'flowbite-svelte-icons';
 
 	export let generator: CharacterGenerator;
 
@@ -89,7 +89,7 @@
 				</Button>
 			{:else}
 				<Button on:click={() => goto('/character_editor')}>
-					<Icon name="user-edit-solid" /> Edit Character
+					<UserEditSolid /> Edit Character
 				</Button>
 			{/if}
 		</CharacterComponent>

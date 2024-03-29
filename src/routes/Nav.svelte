@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { Icon } from 'flowbite-svelte-icons';
+	import { HomeSolid, UserSettingsSolid, UserEditSolid} from 'flowbite-svelte-icons';
 
 	export let position: 'bottom' | 'top';
 	export let hidden = false;
 
 	const navOptions = [
-		{ href: '/', name: 'Home', icon: 'home-solid' },
-		{ href: '/character_generator', name: 'Generator', icon: 'user-settings-solid' },
-		{ href: '/character_editor', name: 'Editor', icon: 'user-edit-solid' }
+		{ href: '/', name: 'Home', icon: HomeSolid },
+		{ href: '/character_generator', name: 'Generator', icon: UserSettingsSolid},
+		{ href: '/character_editor', name: 'Editor', icon: UserEditSolid}
 	];
 
 	$: activeUrl = $page.url.pathname;
@@ -32,7 +32,7 @@
 				}`}
 				data-sveltekit-preload-data
 			>
-				<Icon name={icon} />
+				<svelte:component this={icon} />
 				<span>{name}</span>
 			</a>
 		{/each}
